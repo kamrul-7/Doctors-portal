@@ -1,6 +1,6 @@
 import { format } from 'date-fns';
 import React from 'react';
-const BookingModal = ({ treatment, selectedDate }) => {
+const BookingModal = ({ treatment, selectedDate, setTreatment }) => {
     const { name, slots } = treatment;
     const date = format(selectedDate, 'PP');
     const handleBooking = event => {
@@ -19,6 +19,7 @@ const BookingModal = ({ treatment, selectedDate }) => {
             phone,
         }
         console.log(booking)
+        setTreatment(null)
     }
     return (
         <>
