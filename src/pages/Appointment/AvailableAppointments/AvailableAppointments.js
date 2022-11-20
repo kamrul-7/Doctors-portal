@@ -1,4 +1,3 @@
-import { async } from '@firebase/util';
 import { useQuery } from '@tanstack/react-query';
 import { format } from 'date-fns/esm';
 import React, { useState } from 'react';
@@ -49,5 +48,6 @@ const AvailableAppointments = ({ selectedDate }) => {
         </div>
     );
 };
+
 
 export default AvailableAppointments;

@@ -6,11 +6,11 @@ import { AuthContext } from '../../contexts/AuthProvider';
 const Signup = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { createUser, updateUser } = useContext(AuthContext);
-    const [signUpError, setsignUpError] = useState('')
+    const [signUpError, setSignUpError] = useState('')
     const navigate = useNavigate();
 
     const handleSignUp = (data) => {
-        setsignUpError('')
+        setSignUpError('')
         createUser(data.email, data.password)
             .then(result => {
                 const user = result.user;
@@ -21,13 +21,38 @@ const Signup = () => {
                 }
                 updateUser(userInfo)
                     .then(() => {
-                        navigate('/')
+                        saveUser(data.name, data.email)
                     })
                     .catch(error => console.error(error))
             })
             .catch(error => {
                 console.error(error)
-                setsignUpError(error.message)
+                setSignUpError(error.message)
+            })
+    }
+    const saveUser = (name, email) => {
+        const user = { name, email };
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                getUserToken(email);
+
+            })
+    }
+    const getUserToken = email => {
+        fetch(`http://localhost:5000/jwt?email=${email}`)
+            .then(res => res.json())
+            .then(data => {
+                if (data.accessToken) {
+                    localStorage.setItem('accessToken', data.accessToken);
+                    navigate('/');
+                }
             })
     }
     return (
