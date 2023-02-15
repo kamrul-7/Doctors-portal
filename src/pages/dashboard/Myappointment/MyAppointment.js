@@ -1,10 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
 
 const MyAppointment = () => {
     const { user } = useContext(AuthContext);
-    const url = `http://localhost:5000/bookings?email=${user?.email}`;
+    const url = `https://doctors-portal-server-kamrul-7.vercel.app/bookings?email=${user?.email}`;
     const { data: bookings = [] } = useQuery({
         queryKey: ['bookings', user?.email],
         queryFn: async () => {
@@ -30,7 +31,8 @@ const MyAppointment = () => {
                             <th>Treatment</th>
                             <th>Date</th>
                             <th>Time</th>
-                            <th>Phone</th>
+                            <th>price</th>
+                            <th>Payment</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -42,7 +44,17 @@ const MyAppointment = () => {
                                 <td>{booking.treatment}</td>
                                 <td>{booking.appointmentDate}</td>
                                 <td>{booking.slot}</td>
-                                <td>{booking.phone}</td>
+                                <td>{booking.price}</td>
+                                <td>
+                                    {
+                                        booking.price && !booking.paid && <Link to={'/payment'}>
+                                            <button className='btn btn-secondary btn-sm'>Pay</button>
+                                        </Link>
+                                    }
+                                    {
+                                        booking.price && booking.paid && <span className='text-secondary'>paid</span>
+                                    }
+                                </td>
                             </tr>)
                         }
 

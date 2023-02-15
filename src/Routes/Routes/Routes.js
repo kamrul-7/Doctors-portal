@@ -11,11 +11,16 @@ import PrivateRoute from "../privateRoute/PrivateRoute";
 import AdminRoute from '../AdminRoute/AdminRoute'
 import AddDoctor from "../../pages/dashboard/Dashboard/AddDoctor/AddDoctor";
 import ManageDoctors from "../../pages/dashboard/Dashboard/ManageDoctors/ManageDoctors";
-import Footer from "../../pages/shared/Footer/Footer";
+import DisplayError from "../../pages/shared/DisplayError/DisplayError";
+import Payment from "../../pages/dashboard/Dashboard/Payment/Payment";
+import CheckOutForm from "../../pages/dashboard/CheckOut/CheckOutForm";
+import Contact from "../../pages/Home/contact/Contact";
+import Testimonial from "../../pages/Home/testimonial/Testimonial";
 const router = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
+        errorElement: <DisplayError></DisplayError>,
         children: [
             {
                 path: '/',
@@ -34,6 +39,22 @@ const router = createBrowserRouter([
                 element: <Appointment></Appointment>
 
             },
+            {
+                path: 'payment',
+                element: <Payment></Payment>
+            },
+            {
+                path: 'checkout',
+                element: <CheckOutForm></CheckOutForm>
+            },
+            {
+                path: 'aboutUs',
+                element: <Contact></Contact>
+            },
+            {
+                path: 'review',
+                element: <Testimonial></Testimonial>
+            },
 
 
         ]
@@ -41,6 +62,7 @@ const router = createBrowserRouter([
     {
         path: '/dashboard',
         element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
+        errorElement: <DisplayError></DisplayError>,
         children: [
             {
                 path: '/dashboard',
@@ -58,6 +80,8 @@ const router = createBrowserRouter([
                 path: '/dashboard/managedoctors',
                 element: <AdminRoute><ManageDoctors></ManageDoctors></AdminRoute>
             },
+
+
         ]
 
     },

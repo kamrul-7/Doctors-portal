@@ -1,8 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
-import Footer from '../shared/Footer/Footer';
-
 const NavBar = () => {
     const { user, logOut } = useContext(AuthContext);
     const handleLogOut = () => {
@@ -13,8 +11,8 @@ const NavBar = () => {
     const menuItem = <React.Fragment>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/appointment'>Appointment</Link></li>
-        <li><Link to='/'>Reviews</Link></li>
-        <li><Link to='/'>Contract Us</Link></li>
+        <li><Link to='/review'>Reviews</Link></li>
+        <li><Link to='/aboutUs'>Contract Us</Link></li>
         {user?.uid ?
             <>
                 <li><Link to='/dashboard'>Dashboard</Link></li>    <li><button onClick={handleLogOut} >SignOut</button></li>

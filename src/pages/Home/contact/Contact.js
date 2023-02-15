@@ -2,8 +2,8 @@ import React from 'react';
 import PrimaryButton from '../../../components/primary/PrimaryButton';
 const Contact = () => {
     return (
-        <div className="bg-[url('/src/assets/images/appointment.png')] py-12 text-center text-white ">
-            <div className=''>
+        <div className="bg-[url('/src/assets/images/appointment.png')] py-12 text-center">
+            <div className='text-white'>
                 <h4 className='text-xl font-bold text-primary my-6'>Contact Us</h4>
                 <h2 className='font-20 text-3xl'>Stay connected with us</h2>
             </div>

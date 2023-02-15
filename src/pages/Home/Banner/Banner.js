@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import chair from '../../../assets/images/chair.png'
 import PrimaryButton from '../../../components/primary/PrimaryButton';
 const Banner = () => {
@@ -9,7 +10,7 @@ const Banner = () => {
                 <div>
                     <h1 className="text-5xl font-bold">Your New Smile Starts Here</h1>
                     <p className="py-6 text-lg">Helping patients achieve good dental health & beautiful smile is a privilege & responsibility. For over 10 years, my team & I have proudly provided the best dental experience in Bangladesh. Our comfort-first approach is designed to meet the needs of you & your entire family.</p>
-                    <PrimaryButton>Getting Started</PrimaryButton>
+                    <PrimaryButton> <Link to='/signup'>Getting Started</Link></PrimaryButton>
                 </div>
             </div>
         </div>
