@@ -1,4 +1,5 @@
-
+# Admin: a@c.com
+Password: MINDme777@#
 # Project Link: https://doctors-portal-3f61e.web.app/
 
 
